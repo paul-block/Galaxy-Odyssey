@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1, user-scalable=no" />
+  <link rel=" stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="img/OtherAssets/3.png" />
+  <title>Galaxy Odyssey</title>
+  <script src="./models/drawableObject.class.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+  <script src="./models/scoreManager.class.js"></script>
+  <script src="./models/keyboard.class.js"></script>
+  <script src="./js/game.js"></script>
+  <script src="./models/world.class.js"></script>
+  <script src="./models/movableObject.class.js"></script>
+  <script src="./models/collectableThrowingStar.object.class.js"></script>
+  <script src="./models/attackThrowingStar.object.class.js"></script>
+  <script src="./models/bomb.object.class.js"></script>
+  <script src="./models/bullet.object.class.js"></script>
+  <script src="./models/shootAnimation.object.class.js"></script>
+  <script src="./models/collectableObject.class.js"></script>
+  <script src="./models/character.class.js"></script>
+  <script src="./models/enemy1.class.js"></script>
+  <script src="./models/diamonds.object.class.js"></script>
+  <script src="./models/health.object.class.js"></script>
+  <script src="./models/flyingEnemy2.object.class.js"></script>
+  <script src="./models/flyingEnemy3.object.class.js"></script>
+  <script src="./models/enemy2.class.js"></script>
+  <script src="./models/enemy3.class.js"></script>
+  <script src="./models/enemy4.class.js"></script>
+  <script src="./models/enemy5.class.js"></script>
+  <script src="./models/background.object.class.js"></script>
+  <script src="./models/throwingStars.object.class.js"></script>
+  <script src="./models/platform.object.class.js"></script>
+  <script src="./models/platform2.object.class.js"></script>
+  <script src="./models/platform3.object.class.js"></script>
+  <script src="./models/finishFlag.object.class.js"></script>
+  <script src="./models/level.class.js"></script>
+  <script src="./models/score.class.js"></script>
+  <script src="./models/extraPoints.object.class.js"></script>
+  <script src="./models/comboPopup.js"></script>
+  <script src="./levels/level1.js"></script>
+</head>
+
+<body>
+  <div id="content">
+
+    <div id="header">
+      <img class="icon" id="controlsBtn" onclick="toggleHologram()" src="img/icons/joystick-2-48.png" alt="">
+      <h1 id="name">Galaxy Odyssey</h1>
+      <img id="soundBtn" class="icon" onclick="toggleSound()" src="img/icons/speaker-32.png" alt="">
+    </div>
+
+    <div id="hologramContainer" class="d-none">
+      <div id="hologramContent">
+        <div class="hologramRow">
+          <img src="img/icons/arrowLeft.png" alt="">
+          <span>Left</span>
+        </div>
+
+        <div class="hologramRow">
+          <img src="img/icons/arrowRight.png" alt="">
+          <span>Right</span>
+        </div>
+
+        <div class="hologramRow">
+          <img src="img/icons/arrowUp.png" alt="">
+          <span>Up</span>
+        </div>
+
+        <div class="hologramRow">
+          <img src="img/icons/arrowDown.png" alt="">
+          <span>Down</span>
+        </div>
+
+        <div class="hologramRow">
+          <img src="img/icons/myspace-48.png" alt="">
+          <span>Jump</span>
+        </div>
+
+        <div class="hologramRow">
+          <img src="img/icons/shift-48.png" alt="">
+          <span>Run</span>
+        </div>
+
+        <div class="hologramRow">
+          <span>Q</span>
+          <span>Heal</span>
+        </div>
+
+        <div class="hologramRow">
+          <span>F</span>
+          <span>Fly</span>
+        </div>
+
+        <div class="hologramRow">
+          <span>E</span>
+          <span>Sword</span>
+        </div>
+
+        <div class="hologramRow">
+          <span>D</span>
+          <span>Shuriken</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="timer"></div>
+    <div id="extraPointsContainer" class="d-none">
+      <div id="extraPoints"></div>
+    </div>
+
+    <div id="buttonContainer">
+      <input id="username" type="text" placeholder="Name" autocomplete="off" class="d-none" required>
+      <div class="buttonRow">
+        <span id="backBtnMenu" class="d-none" onclick="backBtnMenu()">Back</span>
+        <span id="continueBtn" onclick="checkAndLoadGame()" class="d-none">Continue</span>
+      </div>
+
+      <span id="playBtn" onclick="changeBtnsMenu()">Play</span>
+      <span id="leaderboardBtn" onclick="openLeaderboard()">Leaderboard</span>
+    </div>
+
+    <div id="startContainer">
+      <div id="leftSlide">
+        <img id="characterImg"
+          src="img/main character sprites/Character 01/Png/Character Sprite/Hit/Character-Hit_13.png" alt="">
+      </div>
+
+      <span id="loading" class="loading d-none">
+        <span class="char">L</span>
+        <span class="char">o</span>
+        <span class="char">a</span>
+        <span class="char">d</span>
+        <span class="char">i</span>
+        <span class="char">n</span>
+        <span class="char">g</span>
+        <span class="char">.</span>
+        <span class="char">.</span>
+        <span class="char">.</span>
+      </span>
+
+      <div id="leaderboard" class="d-none">
+      </div>
+
+      <div id="rightSlide" class="neon-yellow-border">
+        <img id="enemy1" src="img/enemy5/Attack/Attack_09.png" alt="">
+        <img id="enemy2" src="img/FlyingEnemy2/Attack/skeleton-Attack_9.png" alt="">
+        <img id="enemy3" src="img/enemies/Char01/Attack/skeleton-Attack_7.png" alt="">
+        <img id="enemy4" src="img/enemies/Char02/Attack/skeleton-Attack_15.png" alt="">
+        <img id="enemy5" src="img/enemies/Char03/Jump/skeleton-Jump_8.png" alt="">
+        <img id="enemy6" src="img/FlyingEnemy3/Attack/skeleton-Attack_6.png" alt="">
+
+      </div>
+    </div>
+
+    <canvas id="canvas" width="1000" height="700" class="d-none"></canvas>
+
+    <div id="status" class="d-none">
+      <img id="healthStatus" class="d-none" src="img/icons/icon_health.png" alt="">
+      <img id="diamondsStatus" class="d-none" src="img/crystal.png" alt="">
+      <img id="throwingStarsStatus" class="d-none"
+        src="img/main character sprites/Character 01/Png/Projectile/P1_01.png" alt="">
+    </div>
+
+    <div id="shopFooter">
+      <div id="shopContainer" class="d-none">
+        <span><img id="healthPotion" class="grayscale" src="img/healthPotion.png" alt=""></span>
+        <span><img id="flyItem" class="grayscale"
+            src="img/main character sprites/Character 01/Png/Character Sprite/In flying car/Character-In Car_00.png"
+            alt=""></span>
+      </div>
+    </div>
+
+    <div id="progressBars" class="d-none">
+      <div id="healthPotionDiamonds">
+        <div id="diamondsProgressBar" class="diamonds-bar-potion">
+          <div id="diamondsProgress" class="diamonds-fill-potion"></div>
+        </div>
+      </div>
+      <div id="flyDiamonds">
+        <div id="diamondsProgressBar" class="diamonds-bar-potion">
+          <div id="diamondsProgressFlymode" class="diamonds-fill-potion"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="endScreenContainer" class="d-none">
+      <span id="endScreenText">YOU WON !</span>
+      <span id="score">SCORE: 50</span>
+      <span id="restartBtn" class="buttonContainer" onclick="init()">Restart</span>
+      <span id="menuBtn" class="buttonContainer" onclick="endScreenToMenu()">Menu</span>
+    </div>
+  </div>
+
+  </div>
+
+  <div id="loadingScreen"></div>
+
+  <span id="loadingInfo" class="d-none">Collect 5 diamonds, activate flight mode and boost your score.</span>
+
+
+  <div id="rotateDeviceContainer"> <span id="rotateDeviceText">Rotate Device</span>
+  </div>
+
+  <div id="touchBtnContainer" class="d-none">
+    <div class="touchBtnSectionLeft">
+      <img id="btn-left" src="img/icons/arrowLeft.png" alt="">
+      <img id="btn-right" src="img/icons/arrowRight.png" alt="">
+    </div>
+
+    <div id="touchBtnMobileUpAndDown" class="touchBtnMobileUpAndDown">
+      <img id="btn-up" src="img/icons/arrowUp.png" alt="">
+      <img id="btn-down" src="img/icons/arrowDown.png" alt="">
+    </div>
+
+    <div class="touchBtnSectionMiddle">
+      <img id="btn-heal" src="img/icons/plus-3-48.png" alt="">
+      <img id="btn-fly" src="img/icons/airplane-48.png" alt="">
+
+    </div>
+
+    <div class="touchBtnSectionRight">
+      <img id="btn-throw" src="img/icons/redo-3-48.png" alt="">
+      <img id="btn-jump" src="img/icons/arrowUp.png" alt="">
+      <img id="btn-attack" src="img/icons/skull-11-48.png" alt="">
+    </div>
+  </div>
+
+
+  <span id="portfolioLink">Developed by <a href="https://paul-block.de" target="_blank">Paul
+      Block</a></span>
+
+  <span id="soundLinks">Sounds by <a
+      href="https://pixabay.com/de/users/xtremefreddy-32332307/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=145874">XtremeFreddy</a>
+    from <a
+      href="https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=145874">Pixabay</a>
+    and
+    <a
+      href="https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=81267">Pixabay</a>
+    itself.
+  </span>
+</body>
+
+</html>

@@ -1,0 +1,1322 @@
+@font-face {
+  font-family: 'Space Mono';
+  src: url('font/Space_Mono /SpaceMono-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('font/Space_Mono /SpaceMono-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('font/Space_Mono /SpaceMono-Italic.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('font/Space_Mono /SpaceMono-BoldItalic.ttf');
+  font-weight: bold;
+  font-style: italic;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url('img/firefly2.png');
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    font-family: 'Space Mono';
+}
+
+#content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#header {
+  position: absolute;
+  top: 5vh;
+  width: 85vw;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+  padding: .4rem;
+  width: 38px;
+  cursor: pointer;
+}
+
+.icon:hover {
+  scale: .95;
+}
+
+#hologramContainer {
+  position: absolute;
+  top: 12%;
+  left: 2.5%;
+  width: 300px;
+  background: #00c4e64f;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+  overflow: hidden;
+  z-index: 999;
+}
+
+#hologramContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  color: #fff; 
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.hologramRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.hologramRow img {
+  height: 32px;
+}
+
+.growHeight {
+  animation: height 1s forwards; 
+}
+
+.shrinkHeight {
+  animation: shrinkHeight 1s forwards; 
+}
+
+#closeHologram {
+  position: absolute;
+  bottom: -30px;
+  left: 150px;
+  font-size: 32px;
+  color: white;
+  border: 2px solid white;
+  border-radius: 100%;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+  padding: .5rem;
+}
+
+@keyframes height {
+  0% { height: 0; }
+  100% { height: 614px; }
+}
+
+@keyframes shrinkHeight {
+  0% { height: 614px; }
+  100% { height: 0; }
+}
+
+#endScreenImg {
+  width: 1000px;
+  height: 700px;
+  border-radius: 15px;
+}
+
+#restartBtn {
+  position: absolute;
+  bottom: 20px;
+  left: 720px;
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 2rem;
+  color: white;
+  background-color: transparent;
+  border: 3px solid white;
+  border-radius: 10px;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  animation: .6s ease-out fadeInFromNothing;
+  overflow: hidden;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+  z-index: 22;
+  transition: all 125ms ease-in-out;
+  width: 200px;
+}
+
+#loadingScreen {
+  position: absolute;
+  top: 600px;
+  left: 980px;
+  height: 100px;
+  width: 100px;
+}
+
+#loadingScreen img {
+  height: 250px;
+  width: 650px;
+}
+
+#loadingInfo {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%);
+  font-family: 'Space Mono';
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 0 0 5px #00e6e6, 0 0 10px #00e6e6, 0 0 20px #00e6e6, 0 0 40px #00e6e6, 0 0 80px #00e6e6, 0 0 90px #00e6e6, 0 0 100px #00e6e6;
+  animation: fadeInFromNothing .5s ease-in;
+}
+
+#restartBtn:hover {
+  scale: 0.95;
+  cursor: pointer;
+}
+
+#menuBtn {
+  position: absolute;
+  bottom: 20px;
+  right: 720px;
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 2rem;
+  color: white;
+  background-color: transparent;
+  border: 3px solid white;
+  border-radius: 10px;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  animation: .6s ease-out fadeInFromNothing;
+  overflow: hidden;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+  z-index: 22;
+  transition: all 125ms ease-in-out;
+  width: 200px;
+}
+
+#menuBtn:hover {
+  scale: 0.95;
+  cursor: pointer;
+}
+
+
+#canvas {
+  display: block;
+  border-radius: 15px;
+  box-shadow:  0px 0px 10px 2px #00c4e6;
+  animation: 255ms ease-in opacity;
+}
+
+#status {
+  display: flex;
+  position: absolute;
+  height: 700px;
+  width: 1000px;
+  z-index: 99;
+}
+
+
+#healthStatus {
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  height: 52px;
+}
+
+#diamondsStatus {
+  position: absolute;
+  left: 10px;
+  top: 85px;
+  height: 48px;
+}
+
+#throwingStarsStatus {
+  position: absolute;
+  left: 10px;
+  top: 165px;
+  height: 48px;
+}
+
+.hurt {
+  box-shadow:  0px 0px 20px 10px #e61300 !important;
+}
+
+.heal {
+  box-shadow:  0px 0px 20px 10px #00bd00 !important;
+}
+
+#startContainer {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+#username {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: .5rem 1rem;
+    height: 26px;
+    width: 200px;
+    cursor: pointer;
+    animation: .6s ease-out fadeInFromNothing;
+    overflow: hidden;
+    color: white;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+    z-index: 22;
+    transition: all 125ms ease-in-out;
+}
+
+#username::placeholder {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+#continueBtn {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: transparent;
+  border: 3px solid white;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  animation: .6s ease-out fadeInFromNothing;
+  overflow: hidden;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+  z-index: 22;
+  transition: all 125ms ease-in-out;
+}
+
+#continueBtn:hover {
+  scale: .95;
+  transition: all 125ms ease-in-out;
+}
+
+.buttonRow {
+  display: flex;
+  gap: 30px;
+}
+
+#backBtnMenu {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: transparent;
+  animation: .6s ease-out fadeInFromNothing;
+  border: 3px solid white;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+  z-index: 22;
+  transition: all 125ms ease-in-out;
+}
+
+#backBtnMenu:hover {
+  scale: .95;
+  transition: all 125ms ease-in-out;
+}
+
+
+#backBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  min-height: 30px;
+  min-width: 150px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 3px solid white;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+  z-index: 22;
+  transition: all 125ms ease-in-out;
+}
+
+#backBtn:hover {
+  scale: .95;
+  transition: all 125ms ease-in-out;
+}
+
+#playBtn {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: transparent;
+    border: 3px solid white;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    animation: .6s ease-out fadeInFromNothing;
+    overflow: hidden;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+    z-index: 22;
+    transition: all 125ms ease-in-out;
+  }
+
+
+#playBtn:hover {
+  scale: .95;
+  transition: all 125ms ease-in-out;
+}
+
+#buttonContainer span {
+  width: 150px;
+  border-radius: 10px;
+}
+
+#leaderboardBtn {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: transparent;
+  border: 3px solid white;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  animation: .6s ease-out fadeInFromNothing;
+  overflow: hidden;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+  transition: all 125ms ease-in-out;
+}
+
+#leaderboardBtn:hover {
+  scale: 0.97;
+  transition: all 125ms ease-in-out;
+}
+
+#leaderboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  background: #00c4e64f;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+  overflow: scroll;
+  align-items: center;
+  padding: 1rem;
+  animation: openLeaderboard 1s forwards;
+  z-index: 999;
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+#leaderboard::-webkit-scrollbar {
+  display: none;
+}
+
+.scoreRow {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+@keyframes openLeaderboard {
+  0% { height: 0; }
+  100% { height: 700px; }
+}
+
+#leaderboard h1 {
+  color: white;
+}
+
+#name {
+  color: white;
+  font-size: 64px;
+  border: 2px solid transparent;
+  text-shadow: 0 0 5px #00e6e6, 0 0 10px #00e6e6, 0 0 20px #00e6e6, 0 0 40px #00e6e6, 0 0 80px #00e6e6, 0 0 90px #00e6e6, 0 0 100px #00e6e6;
+  }
+
+#leftSlide {
+    position: relative;
+    height: 500px;
+    width: 350px;
+    animation: .6s ease-out slideInFromLeft;
+}
+
+#characterImg {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    height: 500px;
+}
+
+#rightSlide {
+    position: relative;
+    height: 500px;
+    width: 350px;
+    animation: .6s ease-out slideInFromRight;
+}
+
+#enemy1 {
+  position: absolute;
+  bottom: -40px;
+  right: -280px;
+  height: 350px;
+}
+
+#enemy2 {
+  position: absolute;
+  bottom: 220px;
+  left: 150px;
+  height: 100px;
+}
+
+#enemy3 {
+  position: absolute;
+  bottom: 50px;
+  left: -50px;
+  height: 150px;
+}
+
+#enemy4 {
+  position: absolute;
+  bottom: -120px;
+  left: -50px;
+  height: 250px;
+}
+
+#enemy5 {
+  position: absolute;
+  bottom: -120px;
+  left: 200px;
+  height: 150px;
+}
+
+#enemy6 {
+  position: absolute;
+  top: 180px;
+  left: 20px;
+  height: 150px;
+}
+
+#endbossImg {
+  position: absolute;
+  top: 150px;
+  right: -75px;
+  height: 400px;
+}
+
+.d-none {
+    display: none !important;
+}
+
+#shopContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 80px;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 0px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+  border-radius: 10px;
+  /* position: absolute;
+  bottom: 180px;
+  left: 1160px; */
+}
+
+#progressBars {
+  position: absolute;
+  bottom: 10%;
+  display: flex;
+  gap: 50px
+}
+
+#flyDiamonds {
+  width: 120px;
+  height: 30px;
+}
+
+#healthPotionDiamonds {
+  width: 120px;
+  height: 30px;
+}
+
+.diamonds-bar-potion {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 13px;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+}
+
+.diamonds-fill-potion {
+  display: block;
+  height: 20px;
+  background-color: #8708d0;
+  border-radius: 10px;
+  width: 0%;
+}
+
+#endScreenContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+  width: 1000px;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.407);
+  border-radius: 10px;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+}
+
+#endScreenText {
+  color: white;
+  font-weight: bold;
+  font-size: 64px;
+}
+
+#score {
+  color: white;
+  font-weight: bold;
+  font-size: 64px;
+  margin-top: 5rem;
+}
+
+#shopFooter {
+  position: absolute;
+  bottom: 15vh;
+  width: 100vw;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes wave {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.3);
+  }
+}
+
+.sizePulse {
+  animation: sizePulse 1s infinite;
+}
+
+@keyframes sizePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.loading {
+  font-family: 'Space Mono';
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  text-shadow: 0 0 5px #00e6e6, 0 0 10px #00e6e6, 0 0 20px #00e6e6, 0 0 40px #00e6e6, 0 0 80px #00e6e6, 0 0 90px #00e6e6, 0 0 100px #00e6e6;
+  animation: fadeInFromNothing .5s ease-in;
+}
+
+.char {
+  display: inline-block;
+  animation: wave 1s ease-in-out infinite;
+}
+
+.char:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.char:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.char:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.char:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.char:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+.char:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+.char:nth-child(8) {
+  animation-delay: 0.7s;
+}
+
+.char:nth-child(9) {
+  animation-delay: 0.8s;
+}
+
+.char:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+
+#shopContainer span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+#shopContainer span:nth-child(1) {
+  border-right: 2px solid lightgray;
+}
+
+#timer {
+  position: absolute;
+  top: 10vh;
+  left: 50vw;
+  font-size: 64px;
+  font-weight: bold;
+  color: lightblue;
+}
+
+#extraPointsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 280px;
+  left: 780px;
+  width: 1000px;
+  height: 700px;
+  font-size: 96px;
+  font-weight: bold;
+  color: lightblue;
+  z-index: 2;
+}
+
+#extraPoints {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#healthPotion {
+  width: 65px;
+} 
+
+#flyItem {
+  width: 110px;
+  position: absolute;
+  top: -25px;
+}
+
+#soundLinks {
+  position: absolute;
+  bottom: 1vh;
+  right: 1vw;
+  color: white;
+}
+
+#soundLinks a {
+  color: white;
+}
+
+.blink {
+  animation: blink-animation 1s infinite alternate;
+}
+
+@keyframes blink-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Buttons */
+
+#flymodeBtn {
+  position: absolute;
+  bottom: 330px;
+  right: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 55px;
+  width: 55px;
+  background-color: #02b5d4;
+  /* background-color: gray; */
+}
+
+#flymodeBtn img {
+  height: 50px;
+  width: 50px;
+}
+
+.grayscale {
+  filter: grayscale(100%)
+}
+
+#portfolioLink {
+      position: absolute;
+    bottom: 1vh;
+    left: 1vw;
+    color: white;
+}
+
+#portfolioLink a {
+  color: white;
+  text-decoration: none;
+  border-bottom: 2px solid lightskyblue;
+}
+
+#portfolioLink a:hover {
+  color: lightskyblue;
+}
+
+#buttonContainer {
+  position: absolute;
+  align-items: center;
+  top: 40vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  z-index: 2;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1s;
+  }
+}
+
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(200%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInFromNothing {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes growHeight {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 50px;
+    }
+}
+
+@media (max-height: 1249px ) {
+  #shopFooter {
+    bottom: 5vh;
+  }
+
+  #progressBars {
+    bottom: 0vh;
+  }
+}
+
+  
+@media (max-width: 1500px) {
+
+  #canvas {
+    height: 480px !important;
+    width: 720px !important;
+  }
+
+  #shopFooter {
+    bottom: 5vh;
+  }
+
+  #status {
+    width: 720px;
+    height: 480px;
+  }
+
+  #healthStatus {
+    top: 0px;
+    height: 40px;
+  }
+  
+  #diamondsStatus {
+    top: 55px;
+    height: 40px;
+  }
+  
+  #throwingStarsStatus {
+    top: 110px;
+    height: 40px;
+  }
+
+  #healthStatus {
+    height: 40px;
+  }
+
+  #rightSlide {
+    height: 260px;
+    width: 340px;
+  }
+
+  #shopContainer {
+    position: absolute;
+    bottom: 10%;
+    height: 65px;
+    left: unset;
+  }
+
+
+  #endScreenContainer, #endScreenImg {
+    height: 480px;
+    width: 720px;
+  }
+
+  #restartBtn {
+    bottom: 40px;
+    left: 450px;
+  }
+
+  #timer {
+    top: 5vh;
+  }
+
+  #menuBtn {
+    bottom: 40px;
+    right: 450px;
+  }
+
+  #name {
+    left: 32% !important;
+  }
+
+  #characterImg {
+    position: absolute;
+    top: 30px;
+    left: -70px;
+    height: 500px;
+  }
+
+  #enemy1 {
+    position: absolute;
+    bottom: 0px;
+    right: -250px;
+    height: 300px;
+  }
+
+  #enemy2 {
+    position: absolute;
+    bottom: 190px;
+    left: 180px;
+    height: 80px;
+}
+
+#enemy3 {
+  position: absolute;
+  bottom: 60px;
+  left: 70px;
+  height: 110px;
+}
+
+#enemy4 {
+  position: absolute;
+  bottom: -60px;
+  left: 60px;
+  height: 180px;
+}
+
+  #enemy5 {
+    position: absolute;
+    bottom: -60px;
+    left: 240px;
+    height: 120px;
+}
+
+#enemy6 {
+  position: absolute;
+  top: 20px;
+  left: 130px;
+  height: 100px;
+}
+
+  #extraPointsContainer { 
+    top: 10px;
+    left: 260px;
+  }
+
+  #progressBars {
+    bottom: 0;
+  }
+}
+
+#rotateDeviceContainer {
+  display: none;
+}
+
+@media (max-width: 900px) {
+
+  #canvas {
+    height: 99vh !important;
+    width: 99vw !important;
+    border-radius: 0;
+  }
+
+  #name {
+    top: -20px !important;
+    left: 20% !important;
+  }
+
+  #characterImg {
+    position: absolute;
+    top: 200px;
+    left: 0px;
+    height: 250px;
+  }
+
+  #endScreenContainer {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  #enemy1 {
+    position: absolute;
+    bottom: 30px;
+    right: -157px;
+    height: 210px;
+  }
+
+  #enemy2 {
+    position: absolute;
+    bottom: 150px;
+    left: 220px;
+    height: 52px;
+}
+
+#enemy3 {
+  position: absolute;
+  bottom: 52px;
+  left: 158px;
+  height: 92px;
+}
+
+#enemy4 {
+    position: absolute;
+    bottom: -20px;
+    left: 230px;
+    height: 125px;
+}
+
+  #enemy5 {
+    position: absolute;
+    bottom: -18px;
+    left: 175px;
+    height: 99px;
+  }
+
+  #enemy6 {
+    position: absolute;
+    top: 82px;
+    left: 199px;
+    height: 80px;
+  }
+
+  #loadingInfo {
+    top: 75%;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  #playBtn {
+    width: 120px;
+  }
+
+  #hologramContainer{
+    top: 20%;
+    width: 95vw !important;
+    background-color: #19323ef2;
+    animation: controlsMobile 1s forwards;
+    overflow: scroll;
+    z-index: 999;
+  }
+
+ @keyframes controlsMobile {
+      0% { height: 0; }
+    100% { height: 75vh; }
+  }
+
+
+  #leaderboard {
+    height: 50vh !important;
+    overflow: scroll;
+  }
+
+  #leaderboardBtn {
+    width: 120px;
+  }
+
+  #buttonContainer {
+    top: 38%;
+    gap: 30px;
+  }
+
+  #username {
+    width: 120px;
+    height: 20px;
+  }
+
+  #buttonContainer span {
+    display: flex;
+    align-items: center;
+    width: 120px;
+    height: 20px;
+  }
+
+  #loading {
+    text-align: center;
+    min-width: 600px; 
+  }
+
+  #header img {
+    width: 24px;
+  }
+
+  #healthStatus {
+    top: -10px;
+    left: 5px;
+  }
+
+  #diamondsStatus {
+    height: 40px;
+    top: 45px;
+    left: 10px;
+  }
+
+  #throwingStarsStatus {
+    top: 90px;
+    left: 10px;
+    height: 40px;
+  }
+
+  #endScreenImg {
+    position: absolute;
+    top: 0px ;
+    left: 0px ;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  } 
+
+  #status {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  #restartBtn {
+    bottom: 40px;
+    left: 550px;
+  }
+
+  #menuBtn {
+    bottom: 40px;
+    right: 550px;
+  } 
+
+   #shopContainer {
+    position: absolute;
+    flex-direction: column;
+    height: 200px;
+    width: 70px;
+    right: 4px;
+  }
+
+  #flyItem {
+    width: 85px;
+    top: 0px;
+  }
+
+  #healthPotion {
+    position: absolute;
+    bottom: 15px;
+  }
+
+
+  #shopContainer span:nth-child(1) {
+    border-right: none;
+    border-top: 2px solid lightgray;
+  }
+  
+  #timer {
+    left: 50vw;
+    top: 0;
+  }
+
+  #extraPointsContainer {
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  #touchBtnContainer {
+    position: absolute;
+    bottom: -5px;
+    left: 2%;
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    z-index: 999;
+  }
+
+  .touchBtnSectionLeft {
+    display: flex;
+    gap: 70%;
+  }
+
+  .touchBtnSectionRight {
+    display: flex;
+    gap: 20%;
+  }
+
+  .touchBtnSectionMiddle {
+    display: flex;
+    gap: 100%;
+  }
+
+  .touchBtnMobileUpAndDown {
+    position: absolute;
+    bottom: 10px;  
+    left: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .touchBtnSectionLeft img, .touchBtnSectionRight img, .touchBtnSectionMiddle img, .touchBtnMobileUpAndDown img {
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 10px;
+    height: 28px;
+}
+  
+#progressBars {
+  display: none;
+}
+
+  #attackTouchBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: white;
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+}
+}
+
+
+@media (max-width: 500px) {
+  
+  #rotateDeviceContainer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    z-index: 1000;
+  }
+
+  #rotateDeviceText {
+    text-align: center;
+    font-size: 48px;
+    padding: 1rem;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00c4e6, 0 0 80px #00c4e6, 0 0 90px #00c4e6, 0 0 100px #00c4e6;
+    color: white;
+  }
+}
